@@ -1,0 +1,10 @@
+.mdc-list.mdc-list {
+  /** Variables */
+  --cm-nav-list-background-color: var(--md-sys-color-surface);
+  --cm-nav-list-padding-inline: 12px;
+  --cm-nav-list-padding-block: 8px;
+
+  /** Add */
+  background-color: var(--cm-nav-list-background-color);
+  padding: var(--cm-nav-list-padding-block) var(--cm-nav-list-padding-inline);
+}

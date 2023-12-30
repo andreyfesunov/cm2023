@@ -1,5 +1,15 @@
-<mat-nav-list>
-  <mat-list-item *ngFor="let navLink of navLinks">
-    <a [href]="navLink.link">{{ navLink.title }}</a>
-  </mat-list-item>
+<mat-nav-list class="sidebar">
+  <a mat-list-item
+     *ngFor="let navLink of navLinks"
+     [activated]="(activeNav$ | async) === navLink.id"
+     (click)="onClick(navLink.id); $event.preventDefault()"
+     [href]="navLink.link">
+      <span class="sidebar__option">
+        <span class="sidebar__icon material-symbols-outlined">{{ navLink.icon }}</span>
+        <span class="sidebar__title">{{ navLink.title }}</span>
+        <span *ngIf="navLink.notificationsCount !== null" class="sidebar__notifications">
+          {{ getNotificationsCountFormatted(navLink.notificationsCount) }}
+        </span>
+      </span>
+  </a>
 </mat-nav-list>

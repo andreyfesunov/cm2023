@@ -1,7 +1,37 @@
-.mdc-list-item {
-  :hover {
-    ::before {
-      background-color: var(--md-sys-color-secondary-container);
-    }
+@use '../mixins/typography';
+@use '../theme';
+
+.mat-mdc-list-item {
+  /** Variables */
+  --cm-list-item-container-shape: 28px;
+  --cm-list-item-hover-state-layer-opacity: 0.08;
+  --cm-list-item-selected-container-opacity: 0.1;
+  --cm-list-item-one-line-container-height: 56px;
+
+  /** Colors */
+  --mdc-list-list-item-label-text-color: var(--md-sys-color-on-surface-variant);
+  --mdc-list-list-item-hover-label-text-color: var(--md-sys-color-on-secondary-container);
+  --mdc-list-list-item-hover-state-layer-color: var(--md-sys-color-on-secondary-container);
+  --mdc-list-list-item-focus-state-layer-color: var(--md-sys-color-on-secondary-container);
+  --mdc-list-list-item-focus-label-text-color: var(--md-sys-color-on-secondary-container);
+
+  /** Sizes */
+  --mdc-list-list-item-container-shape: var(--cm-list-item-container-shape);
+  --mdc-list-list-item-hover-state-layer-opacity: var(--cm-list-item-hover-state-layer-opacity);
+  --mdc-list-list-item-selected-container-opacity: var(--cm-list-item-selected-container-opacity);
+  --mdc-list-list-item-one-line-container-height: var(--cm-list-item-one-line-container-height);
+
+  .mat-ripple {
+    --_opacity: 0.1;
+
+    opacity: var(--_opacity);
   }
+}
+
+.mat-mdc-list-base.mat-mdc-list-base .mdc-list-item--activated .mdc-list-item__primary-text {
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.mdc-list-item--activated {
+  --mdc-list-list-item-container-color: var(--md-sys-color-secondary-container);
 }
