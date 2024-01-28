@@ -1,0 +1,17 @@
+.mat-mdc-raised-button.mat-mdc-button-base {
+  height: 40px;
+  border-radius: 20px;
+}
+
+.mat-mdc-raised-button.mat-mdc-raised-button:not(:disabled) {
+  background-color: var(--md-sys-color-surface-container-low);
+}
+
+.mat-mdc-raised-button.mat-mdc-raised-button:not(:disabled) {
+  color: var(--md-sys-color-primary);
+}
+
+.mat-mdc-raised-button.mat-primary.mat-primary {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}

@@ -4,11 +4,14 @@
      [activated]="(activeNav$ | async) === navLink.id"
      (click)="onClick(navLink.id); $event.preventDefault()"
      [href]="navLink.link">
-      <span class="sidebar__option">
+      <span
+        class="sidebar__option"
+        [class.sidebar__option--selected]="(activeNav$ | async) === navLink.id"
+      >
         <span class="sidebar__icon material-symbols-outlined">{{ navLink.icon }}</span>
         <span class="sidebar__title">{{ navLink.title }}</span>
         <span *ngIf="navLink.notificationsCount !== null" class="sidebar__notifications">
-          {{ getNotificationsCountFormatted(navLink.notificationsCount) }}
+          {{ navLink.notificationsCount | notificationCount }}
         </span>
       </span>
   </a>

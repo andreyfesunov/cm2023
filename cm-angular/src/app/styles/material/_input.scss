@@ -1,0 +1,15 @@
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: var(--md-sys-color-on-surface)
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: var(--md-sys-color-on-surface-variant);
+}

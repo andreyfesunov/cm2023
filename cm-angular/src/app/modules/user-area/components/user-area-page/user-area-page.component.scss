@@ -1,0 +1,27 @@
+@use "src/styles";
+
+.container {
+  --_cm-container-content-background-color: var(--md-sys-color-background);
+  --_cm-container-content-margin: 12px;
+  --_cm-container-content-border-radius: 12px;
+  --_cm-container-grid-columns: 180px 1fr;
+
+  background-color: var(--md-sys-color-surface);
+  grid-template-columns: var(--_cm-container-grid-columns);
+
+  display: grid;
+  min-height: 100%;
+
+  &__content {
+    margin: var(--_cm-container-content-margin);
+    border-radius: var(--_cm-container-content-border-radius);
+
+    background-color: var(--_cm-container-content-background-color);
+
+    overflow: hidden;
+  }
+
+  @media #{styles.$lg} {
+    --_cm-container-grid-columns: 360px 1fr;
+  }
+}

@@ -54,8 +54,4 @@ export class SidebarComponent implements OnInit, OnDestroy {
   public onClick(id: number): void {
     this.activeNav$.next(id);
   }
-
-  public getNotificationsCountFormatted(count: number): string {
-    return count <= 99 ? count.toString() : "99+";
-  }
 }

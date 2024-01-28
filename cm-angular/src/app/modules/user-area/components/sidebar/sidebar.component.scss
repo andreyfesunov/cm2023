@@ -1,0 +1,29 @@
+@use "src/styles";
+
+.sidebar {
+  --_cm-sidebar-option-color: var(--md-sys-color-on-surface-variant);
+  min-height: 100%;
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &--selected {
+      --_cm-sidebar-option-color: var(--md-sys-color-on-secondary-container);
+    }
+
+    @include styles.title-small;
+  }
+
+  &__icon,
+  &__title,
+  &__notifications {
+    color: var(--_cm-sidebar-option-color);
+    display: inline-block;
+  }
+
+  &__notifications {
+    margin-left: auto;
+  }
+}

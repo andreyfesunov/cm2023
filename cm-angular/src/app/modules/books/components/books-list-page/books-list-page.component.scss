@@ -1,0 +1,24 @@
+@use "src/styles";
+
+.books {
+  --_cm-books-list-margin: 8px;
+  --_cm-books-list-grid-gap: 8px;
+  --_cm-books-list-grid-columns: 1fr;
+
+  margin: var(--_cm-books-list-margin);
+  grid-template-columns: var(--_cm-books-list-grid-columns);
+  grid-gap: var(--_cm-books-list-grid-gap);
+
+  display: grid;
+
+  @media #{styles.$sm} {
+    --_cm-books-list-grid-columns: repeat(2, 1fr);
+  }
+  @media #{styles.$lg} {
+    --_cm-books-list-grid-columns: repeat(3, 1fr);
+  }
+}
+
+.title-small {
+  @include styles.title-small;
+}

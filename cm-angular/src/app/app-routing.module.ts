@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {RootRoutes} from "./router.service";
 
 const routes: Routes = [
   {
-    path: "",
-    pathMatch: "full",
-    loadChildren: () => import('./modules/user-area/user-area.module').then(m => m.UserAreaModule)
+    path: RootRoutes.App,
+    loadChildren: () => import('./modules/user-area/user-area.module').then(m => m.UserAreaModuleWithRouting)
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: RootRoutes.App
   }
 ];
 
@@ -13,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

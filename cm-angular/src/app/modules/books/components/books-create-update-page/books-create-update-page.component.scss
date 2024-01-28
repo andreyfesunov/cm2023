@@ -1,0 +1,8 @@
+.books-create-update-form {
+  --_cm-books-form-padding: 12px;
+
+  padding: var(--_cm-books-form-padding);
+
+  display: flex;
+  flex-direction: column;
+}

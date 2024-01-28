@@ -1,0 +1,7 @@
+.books__header {
+  --_cm-books-header-padding: 8px;
+  --_cm-books-header-background-color: var(--md-sys-color-secondary-container);
+
+  background-color: var(--_cm-books-header-background-color);
+  padding: var(--_cm-books-header-padding);
+}

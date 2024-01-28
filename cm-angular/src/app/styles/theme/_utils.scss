@@ -1,0 +1,5 @@
+$lgSize: 992px;
+$smSize: 576px;
+
+$sm: 'only screen and (min-width : ' + $smSize + ')';
+$lg: 'only screen and (min-width : ' + $lgSize + ')';

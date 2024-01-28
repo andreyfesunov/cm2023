@@ -1,0 +1,14 @@
+<app-books-header></app-books-header>
+<div class="books" *ngIf="books | async as books">
+  <mat-card class="books__item" *ngFor="let book of books">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>{{ book.author | author }}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button (click)="openEdit(book.id)" class="title-small" mat-raised-button>Edit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

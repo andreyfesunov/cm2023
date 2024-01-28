@@ -1,12 +1,24 @@
-import { NgModule} from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { UserAreaPageComponent } from "./pages/user-area-page/user-area-page.component";
+import {NgModule} from "@angular/core";
+import {RouterModule, Routes} from "@angular/router";
+import {UserAreaPageComponent} from "./components/user-area-page/user-area-page.component";
+import {UserRoutes} from "../../router.service";
 
 const routes: Routes = [
   {
     path: "",
-    pathMatch: "full",
-    component: UserAreaPageComponent
+    pathMatch: 'prefix',
+    component: UserAreaPageComponent,
+    children: [
+      {
+        path: UserRoutes.Books,
+        loadChildren: () => import('../books/books.module').then(m => m.BooksModuleWithRouting)
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: UserRoutes.Books
+      }
+    ]
   }
 ];
 
@@ -14,4 +26,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserAreaRoutingModule { }
+export class UserAreaRoutingModule {
+}
