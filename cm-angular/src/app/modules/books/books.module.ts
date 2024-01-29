@@ -14,25 +14,30 @@ import {MatCardModule} from "@angular/material/card";
 
 const pipes = [AuthorPipe]
 
-const components = [BooksListPageComponent, BooksCreateUpdatePageComponent, BooksHeaderComponent];
+const components = [
+  BooksListPageComponent,
+  BooksCreateUpdatePageComponent,
+  BooksHeaderComponent
+];
 
-const modules = [
+const matModules = [
   MatListModule,
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
   MatCardModule,
-  CommonModule,
-  ReactiveFormsModule
 ]
 
-const providers = [];
+const modules = [
+  CommonModule,
+  ReactiveFormsModule,
+  ...matModules
+]
 
 @NgModule({
   declarations: [...components, ...pipes],
   exports: [...components, ...pipes],
   imports: [...modules],
-  providers: [...providers]
 })
 export class BooksModule {
 }

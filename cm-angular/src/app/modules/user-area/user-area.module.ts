@@ -21,7 +21,9 @@ const modules = [
   MatListModule
 ]
 
-const providers = [{provide: BooksService, useFactory: booksServiceFactory}];
+const providers = [
+  {provide: BooksService, useFactory: booksServiceFactory}
+];
 
 function booksServiceFactory() {
   return new BooksMockService()

@@ -1,0 +1,8 @@
+@mixin host() {
+  --_cm-layout-padding: 12px;
+
+  padding: var(--_cm-layout-padding);
+
+  display: flex;
+  flex-direction: column;
+}

@@ -88,6 +88,8 @@ export class BooksCreateUpdatePageComponent implements OnDestroy, OnInit {
       this._subscription.add(
         request$.subscribe(() => this._routerService.toAllBooks())
       );
+    } else {
+      this.formGroup.markAllAsTouched();
     }
   }
 
