@@ -16,7 +16,10 @@ interface IRegisterFormGroup {
   styleUrls: ['register-page.component.scss'],
   templateUrl: 'register-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'register-page'
+  }
 })
 export class RegisterPageComponent implements OnDestroy {
   public constructor(

@@ -1,26 +1,48 @@
 @use "src/styles";
 
+.user-area-page {
+  @include styles.host-page;
+}
+
 .container {
   --_cm-container-content-background-color: var(--md-sys-color-background);
-  --_cm-container-content-margin: 8px;
-  --_cm-container-content-border-radius: 12px;
-  --_cm-container-grid-columns: 180px 1fr;
+  --_cm-container-content-margin-block: 0;
+  --_cm-container-content-border-radius: 0;
+
+  --_cm-container-grid-columns: 1fr;
+  --_cm-container-grid-rows: 1fr min-content;
+  --_cm-container-grid-area: "content" "navbar";
 
   background-color: var(--md-sys-color-surface);
   grid-template-columns: var(--_cm-container-grid-columns);
+  grid-template-rows: var(--_cm-container-grid-rows);
+  grid-template-areas: var(--_cm-container-grid-area);
 
   display: grid;
-  min-height: 100%;
+  height: 100%;
 
   &__content {
-    margin: var(--_cm-container-content-margin);
-    border-radius: var(--_cm-container-content-border-radius);
+    grid-area: content;
 
-    background-color: var(--_cm-container-content-background-color);
-
+    @include styles.host-flex;
     overflow: hidden;
+
+    margin-block: var(--_cm-container-content-margin-block);
+    border-radius: var(--_cm-container-content-border-radius);
+    background-color: var(--_cm-container-content-background-color);
   }
 
+  &__header {
+    grid-area: navbar;
+  }
+
+  @media #{styles.$sm} {
+    --_cm-container-grid-columns: min-content 1fr;
+    --_cm-container-grid-rows: 1fr;
+    --_cm-container-grid-area: "navbar content";
+    --_cm-container-content-margin-block: 8px;
+    --_cm-container-content-border-radius: 12px;
+  }
   @media #{styles.$lg} {
     --_cm-container-grid-columns: 360px 1fr;
   }

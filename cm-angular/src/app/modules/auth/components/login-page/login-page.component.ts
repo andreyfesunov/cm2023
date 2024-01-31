@@ -16,6 +16,9 @@ interface ILoginFormGroup {
   styleUrls: ['login-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'login-page'
+  }
 })
 export class LoginPageComponent implements OnDestroy {
   public constructor(

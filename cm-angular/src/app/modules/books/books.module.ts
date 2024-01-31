@@ -10,6 +10,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {BooksHeaderComponent} from "./components/books-header/books-header.component";
 import {MatCardModule} from "@angular/material/card";
+import {SharedModule} from "../shared/shared.module";
 
 const components = [
   BooksListPageComponent,
@@ -27,6 +28,7 @@ const matModules = [
 
 const modules = [
   CommonModule,
+  SharedModule,
   ReactiveFormsModule,
   ...matModules
 ]

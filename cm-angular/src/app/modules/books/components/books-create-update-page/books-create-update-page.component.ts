@@ -17,7 +17,10 @@ export interface IBooksCreateUpdateFormGroup {
   templateUrl: 'books-create-update-page.component.html',
   styleUrls: ['books-create-update-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'books-create-update-page'
+  }
 })
 export class BooksCreateUpdatePageComponent implements OnDestroy, OnInit {
   public constructor(

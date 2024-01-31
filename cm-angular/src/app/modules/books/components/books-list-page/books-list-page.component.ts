@@ -9,7 +9,10 @@ import {BooksAbstractService} from "../../services/books-abstract.service";
   styleUrls: ['books-list-page.component.scss'],
   templateUrl: 'books-list-page.component.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'books-list-page'
+  }
 })
 export class BooksListPageComponent implements OnDestroy {
   public constructor(private readonly _booksService: BooksAbstractService,

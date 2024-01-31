@@ -1,9 +1,12 @@
+@use "../theme/utils";
+
 .mat-mdc-list-item {
   /** Variables */
-  --cm-list-item-container-shape: 28px;
+  --cm-list-item-container-shape: 0;
   --cm-list-item-hover-state-layer-opacity: 0.08;
   --cm-list-item-selected-container-opacity: 0.1;
-  --cm-list-item-one-line-container-height: 56px;
+  --cm-list-item-one-line-container-height: 48px;
+  --cm-list-item-background-color: unset;
 
   /** Colors */
   --mdc-list-list-item-label-text-color: var(--md-sys-color-on-surface-variant);
@@ -23,6 +26,12 @@
 
     opacity: var(--_opacity);
   }
+
+  @media #{utils.$sm} {
+    --cm-list-item-container-shape: 28px;
+    --cm-list-item-one-line-container-height: 56px;
+    --cm-list-item-background-color: var(--md-sys-color-secondary-container);
+  }
 }
 
 .mat-mdc-list-base.mat-mdc-list-base .mdc-list-item--activated .mdc-list-item__primary-text {
@@ -30,5 +39,9 @@
 }
 
 .mdc-list-item--activated {
-  --mdc-list-list-item-container-color: var(--md-sys-color-secondary-container);
+  --mdc-list-list-item-container-color: var(--cm-list-item-background-color);
+}
+
+.mdc-list-item:hover::before {
+  background-color: unset;
 }

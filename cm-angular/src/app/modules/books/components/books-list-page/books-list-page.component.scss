@@ -1,5 +1,9 @@
 @use "src/styles";
 
+.books-list-page {
+  @include styles.host-page;
+}
+
 .books {
   --_cm-books-list-margin: 8px;
   --_cm-books-list-grid-gap: 8px;

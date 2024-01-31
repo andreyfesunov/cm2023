@@ -1,10 +1,18 @@
+@use "../theme/utils";
+
 .mdc-list.mdc-list {
   /** Variables */
   --cm-nav-list-background-color: var(--md-sys-color-surface);
-  --cm-nav-list-padding-inline: 12px;
-  --cm-nav-list-padding-block: 8px;
+  --cm-nav-list-padding-inline: 0;
+  --cm-nav-list-padding-block: 12px 16px;
 
   /** Add */
   background-color: var(--cm-nav-list-background-color);
-  padding: var(--cm-nav-list-padding-block) var(--cm-nav-list-padding-inline);
+  padding-inline: var(--cm-nav-list-padding-inline);
+  padding-block: var(--cm-nav-list-padding-block);
+
+  @media #{utils.$sm} {
+    --cm-nav-list-padding-inline: 12px;
+    --cm-nav-list-padding-block: 8px;
+  }
 }

@@ -1,19 +1,38 @@
 @use "src/styles";
 
 .sidebar {
+  --_cm-sidebar-title-display: inline-block;
+  --_cm-sidebar-notifications-display: none;
   --_cm-sidebar-option-color: var(--md-sys-color-on-surface-variant);
-  min-height: 100%;
+  --_cm-sidebar-flex-direction: row;
+  --_cm-sidebar-justify-content: space-between;
+
+  --_cm-sidebar-option-flex-direction: column;
+
+  --_cm-sidebar-option-icon-background-color: unset;
+  --_cm-sidebar-option-icon-padding-inline: 20px;
+  --_cm-sidebar-option-icon-radius: 16px;
+  --_cm-sidebar-option-icon-height: 32px;
+
+  display: flex;
+  height: 100%;
+
+  flex-direction: var(--_cm-sidebar-flex-direction);
+  justify-content: var(--_cm-sidebar-justify-content);
 
   &__option {
     display: flex;
     align-items: center;
     gap: 4px;
 
+    flex-direction: var(--_cm-sidebar-option-flex-direction);
+
     &--selected {
       --_cm-sidebar-option-color: var(--md-sys-color-on-secondary-container);
+      --_cm-sidebar-option-icon-background-color: var(--md-sys-color-secondary-container);
     }
 
-    @include styles.title-small;
+    @include styles.label-medium;
   }
 
   &__icon,
@@ -23,7 +42,38 @@
     display: inline-block;
   }
 
+  &__icon {
+    line-height: var(--_cm-sidebar-option-icon-height);
+    padding-inline: var(--_cm-sidebar-option-icon-padding-inline);
+    background-color: var(--_cm-sidebar-option-icon-background-color);
+    border-radius: var(--_cm-sidebar-option-icon-radius);
+  }
+
+  &__title {
+    display: var(--_cm-sidebar-title-display);
+  }
+
   &__notifications {
+    display: var(--_cm-sidebar-notifications-display);
     margin-left: auto;
+  }
+
+  @media #{styles.$sm} {
+    --_cm-sidebar-title-display: none;
+    --_cm-sidebar-flex-direction: column;
+    --_cm-sidebar-justify-content: start;
+
+    --_cm-sidebar-option-flex-direction: row;
+
+    --_cm-sidebar-option-icon-padding-inline: 0;
+    --_cm-sidebar-option-icon-height: 24px;
+
+    &__option {
+      @include styles.label-large;
+    }
+  }
+  @media #{styles.$lg} {
+    --_cm-sidebar-notifications-display: inline-block;
+    --_cm-sidebar-title-display: inline-block;
   }
 }

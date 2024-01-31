@@ -6,7 +6,6 @@ import {AuthService} from "../../../auth/services/auth.service";
 import {BooksAbstractService} from "../../../books/services/books-abstract.service";
 
 export interface INavItem {
-  id: number,
   title: string,
   link: string[],
   icon: string | null,
@@ -29,7 +28,6 @@ export class SidebarComponent {
 
   public navLinks: INavItem[] = [
     {
-      id: 0,
       title: "Books",
       link: routes.books.index,
       icon: "collections_bookmark",
@@ -37,7 +35,20 @@ export class SidebarComponent {
       if$: this._authService.authorized$
     },
     {
-      id: 1,
+      title: "Stub",
+      link: ['#'],
+      icon: "block",
+      notificationsCount$: null,
+      if$: this._authService.authorized$
+    },
+    {
+      title: "Stub",
+      link: ['#'],
+      icon: "block",
+      notificationsCount$: null,
+      if$: this._authService.authorized$
+    },
+    {
       title: "Login",
       link: routes.auth.login,
       icon: "person",
@@ -45,7 +56,6 @@ export class SidebarComponent {
       if$: this._authService.authorized$.pipe(map((v) => !v))
     },
     {
-      id: 2,
       title: "Register",
       link: routes.auth.register,
       icon: "person_add",

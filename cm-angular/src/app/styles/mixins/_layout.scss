@@ -1,8 +1,16 @@
-@mixin host() {
+@mixin host-flex() {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 1px;
+}
+
+@mixin host-page {
+  height: 100%;
+  @include host-flex;
+}
+
+@mixin host-padding {
   --_cm-layout-padding: 12px;
 
   padding: var(--_cm-layout-padding);
-
-  display: flex;
-  flex-direction: column;
 }
