@@ -17,6 +17,11 @@
   @media #{styles.$lg} {
     --_cm-books-list-grid-columns: repeat(3, 1fr);
   }
+
+  &__buttons {
+    display: flex;
+    gap: var(--_cm-books-list-grid-gap);
+  }
 }
 
 .title-small {

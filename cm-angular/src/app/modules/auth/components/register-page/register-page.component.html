@@ -1,5 +1,9 @@
 <div class="register-form">
   <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput [formControl]="formGroup.controls.name">
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput [formControl]="formGroup.controls.email">
   </mat-form-field>

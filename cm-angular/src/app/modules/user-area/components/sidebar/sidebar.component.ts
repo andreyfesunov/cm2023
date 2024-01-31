@@ -1,12 +1,17 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
-import {BehaviorSubject, Subscription} from "rxjs";
+import {Component} from "@angular/core";
+import {routes} from "../../../../router.service";
+import {Router} from "@angular/router";
+import {map, Observable} from "rxjs";
+import {AuthService} from "../../../auth/services/auth.service";
+import {BooksAbstractService} from "../../../books/services/books-abstract.service";
 
 export interface INavItem {
   id: number,
   title: string,
-  link: string,
+  link: string[],
   icon: string | null,
-  notificationsCount: number | null
+  notificationsCount$: Observable<number> | null,
+  if$: Observable<boolean>
 }
 
 @Component({
@@ -14,44 +19,48 @@ export interface INavItem {
   templateUrl: "sidebar.component.html",
   styleUrls: ["sidebar.component.scss"]
 })
-export class SidebarComponent implements OnInit, OnDestroy {
-  private readonly _subscription: Subscription = new Subscription();
-  public activeNav$: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(null);
+export class SidebarComponent {
+  public constructor(
+    private readonly _router: Router,
+    private readonly _authService: AuthService,
+    private readonly _booksService: BooksAbstractService
+  ) {
+  }
+
   public navLinks: INavItem[] = [
     {
       id: 0,
-      title: "Home",
-      link: "#",
-      icon: "home",
-      notificationsCount: null
+      title: "Books",
+      link: routes.books.index,
+      icon: "collections_bookmark",
+      notificationsCount$: this._booksService.getList().pipe(map((list) => list.length)),
+      if$: this._authService.authorized$
     },
     {
       id: 1,
-      title: "Settings",
-      link: "#",
-      icon: "settings",
-      notificationsCount: 32
+      title: "Login",
+      link: routes.auth.login,
+      icon: "person",
+      notificationsCount$: null,
+      if$: this._authService.authorized$.pipe(map((v) => !v))
     },
     {
       id: 2,
-      title: "Gallery",
-      link: "#",
-      icon: "gallery_thumbnail",
-      notificationsCount: 101
+      title: "Register",
+      link: routes.auth.register,
+      icon: "person_add",
+      notificationsCount$: null,
+      if$: this._authService.authorized$.pipe(map((v) => !v))
     }
   ];
 
-  public ngOnInit(): void {
-    this._subscription.add(
-      this.activeNav$.subscribe((v) => console.log(v))
-    );
+  protected isActive(item: INavItem): boolean {
+    const matchArray = this._router.url.match(item.link.join('/'));
+    if (matchArray === null) return false;
+    return matchArray.length > 0;
   }
 
-  public ngOnDestroy() {
-    this._subscription.unsubscribe();
-  }
-
-  public onClick(id: number): void {
-    this.activeNav$.next(id);
+  public onClick(item: INavItem): void {
+    this._router.navigate(item.link);
   }
 }

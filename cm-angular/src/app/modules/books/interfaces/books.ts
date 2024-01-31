@@ -1,20 +1,14 @@
 export interface IBook {
-  id: number;
-  title: string;
-  author: IAuthor;
-}
-
-export interface IAuthor {
-  firstName: string;
-  lastName: string;
+  id: string;
+  userId: string;
+  name: string;
+  author: string;
 }
 
 // dto
 
-export interface IUpdateBookRequest extends IBook {
+export interface IUpdateBookRequest extends Omit<IBook, 'userId'> {
 }
 
-export interface ICreateBookRequest {
-  title: string;
-  author: IAuthor;
+export interface ICreateBookRequest extends Omit<IUpdateBookRequest, 'id'> {
 }

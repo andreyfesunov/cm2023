@@ -1,11 +1,12 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from "@angular/core";
-import {RouterService} from "../../../../router.service";
+import {ChangeDetectionStrategy, Component, Input, TemplateRef, ViewEncapsulation} from "@angular/core";
 
 @Component({
   selector: 'app-books-header',
   template: `
     <div class="books__header">
-      <button mat-raised-button (click)="onClick()">Create</button>
+      <ng-container *ngTemplateOutlet="leftRef"></ng-container>
+      <div class="divider"></div>
+      <ng-container *ngTemplateOutlet="rightRef"></ng-container>
     </div>
   `,
   styleUrls: ['books-header.component.scss'],
@@ -13,10 +14,6 @@ import {RouterService} from "../../../../router.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BooksHeaderComponent {
-  public constructor(private readonly _routerService: RouterService) {
-  }
-
-  public onClick(): void {
-    this._routerService.toCreateBook();
-  }
+  @Input() public leftRef: TemplateRef<null> | null = null;
+  @Input() public rightRef: TemplateRef<null> | null = null;
 }

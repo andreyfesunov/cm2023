@@ -11,6 +11,10 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: RootRoutes.App
+  },
+  {
+    path: '**',
+    redirectTo: RootRoutes.App
   }
 ];
 

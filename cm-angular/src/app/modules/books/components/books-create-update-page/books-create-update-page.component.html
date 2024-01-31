@@ -1,15 +1,16 @@
+<app-books-header [leftRef]="leftRef">
+  <ng-template #leftRef>
+    <button mat-raised-button (click)="onBack()">Back</button>
+  </ng-template>
+</app-books-header>
 <div class="books-create-update-form" [formGroup]="formGroup">
   <mat-form-field>
     <mat-label>Book title</mat-label>
-    <input matInput [formControl]="formGroup.controls.title">
+    <input matInput [formControl]="formGroup.controls.name">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Author's first name</mat-label>
-    <input matInput [formControl]="formGroup.controls.authorFirstName">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Author's last name</mat-label>
-    <input matInput [formControl]="formGroup.controls.authorLastName">
+    <mat-label>Author's name</mat-label>
+    <input matInput [formControl]="formGroup.controls.author">
   </mat-form-field>
 
   <button mat-raised-button (click)="onSave()">Save</button>

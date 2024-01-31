@@ -20,8 +20,8 @@ export enum BooksRoutes {
   Create = 'create'
 }
 
-export const toAllBooks = [...toBooks, BooksRoutes.All];
-const toBook = (id: number) => [...toBooks, id.toString()];
+const toAllBooks = [...toBooks, BooksRoutes.All];
+const toBook = (id: string) => [...toBooks, id];
 const toCreateBook = [...toBooks, BooksRoutes.Create];
 
 export enum AuthRoutes {
@@ -31,6 +31,18 @@ export enum AuthRoutes {
 
 const toLogin = [...toAuth, AuthRoutes.Login];
 const toRegister = [...toAuth, AuthRoutes.Register];
+
+export const routes = {
+  books: {
+    index: toBooks,
+    all: toAllBooks
+  },
+  auth: {
+    index: toAuth,
+    login: toLogin,
+    register: toRegister
+  }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +55,7 @@ export class RouterService {
     this._router.navigate(toAllBooks);
   }
 
-  public toBook(id: number): void {
+  public toBook(id: string): void {
     this._router.navigate(toBook(id));
   }
 

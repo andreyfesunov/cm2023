@@ -1,14 +1,24 @@
-<app-books-header></app-books-header>
-<div class="books" *ngIf="books | async as books">
+<app-books-header [leftRef]="leftRef" [rightRef]="rightRef">
+  <ng-template #leftRef>
+    <button mat-raised-button (click)="onCreate()">Create</button>
+  </ng-template>
+  <ng-template #rightRef>
+    <button mat-raised-button color="primary" (click)="onClear()">Clear</button>
+  </ng-template>
+</app-books-header>
+<div class="books" *ngIf="books$ | async as books">
   <mat-card class="books__item" *ngFor="let book of books">
     <mat-card-header>
       <mat-card-title-group>
-        <mat-card-title>{{ book.title }}</mat-card-title>
-        <mat-card-subtitle>{{ book.author | author }}</mat-card-subtitle>
+        <mat-card-title>{{ book.name }}</mat-card-title>
+        <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-actions align="end">
-      <button (click)="openEdit(book.id)" class="title-small" mat-raised-button>Edit</button>
+      <div class="books__buttons">
+        <button (click)="openEdit(book.id)" class="title-small" mat-raised-button>Edit</button>
+        <button (click)="onDelete(book.id)" color="primary" class="title-small" mat-raised-button>Delete</button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>
