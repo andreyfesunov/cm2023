@@ -29,6 +29,10 @@ export class BooksApiService extends BooksAbstractService {
     return this._httpClient.post<IBook>(this._requestURL, dto);
   }
 
+  public generate(count: number): Observable<void> {
+    return this._httpClient.post<void>(this._requestURL + `/generate/${count}`, []);
+  }
+
   public getById(id: string): Observable<IBook> {
     return this._httpClient.get<IBook>(this._requestURL + `/${id}`);
   }

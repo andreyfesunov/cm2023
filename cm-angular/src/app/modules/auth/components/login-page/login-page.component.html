@@ -9,4 +9,5 @@
   </mat-form-field>
 
   <button mat-raised-button (click)="onSubmit()">Submit</button>
+  <mat-error class="login-form__error" *ngIf="hasError$ | async">Authentication failed</mat-error>
 </div>

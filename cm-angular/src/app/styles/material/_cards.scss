@@ -1,4 +1,10 @@
+@use "../mixins/typography";
+
 .mat-mdc-card.mat-mdc-card.mat-mdc-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   background-color: var(--md-sys-color-surface-container-low);
   border-color: var(--md-sys-color-outline-variant);
   border-radius: 12px;
@@ -10,4 +16,9 @@
 
 .mat-mdc-card-subtitle {
   color: var(--md-sys-color-secondary);
+}
+
+mat-card-title,
+mat-card-subtitle {
+  @include typography.title-medium;
 }

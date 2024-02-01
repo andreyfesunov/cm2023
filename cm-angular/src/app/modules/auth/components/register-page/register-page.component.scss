@@ -1,10 +1,31 @@
 @use "src/styles";
 
 .register-page {
+  align-items: center;
+
   @include styles.host-page;
 }
 
 .register-form {
+  --_form-justify-content: start;
+  --_form-width: 100%;
+
+  display: flex;
+  width: var(--_form-width);
+  justify-content: var(--_form-justify-content);
+
   @include styles.host-flex;
   @include styles.host-padding;
+
+  &__error {
+    padding-top: 8px;
+    text-align: center;
+  }
+
+  @media #{styles.$sm} {
+    --_form-justify-content: center;
+  }
+  @media #{styles.$lg} {
+    --_form-width: 80%;
+  }
 }

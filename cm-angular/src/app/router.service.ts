@@ -26,10 +26,12 @@ const toCreateBook = [...toBooks, BooksRoutes.Create];
 
 export enum AuthRoutes {
   Login = 'login',
+  Logout = 'logout',
   Register = 'register'
 }
 
 const toLogin = [...toAuth, AuthRoutes.Login];
+const toLogout = [...toAuth, AuthRoutes.Logout];
 const toRegister = [...toAuth, AuthRoutes.Register];
 
 export const routes = {
@@ -40,6 +42,7 @@ export const routes = {
   auth: {
     index: toAuth,
     login: toLogin,
+    logout: toLogout,
     register: toRegister
   }
 }

@@ -42,9 +42,9 @@ export class SidebarComponent {
       if$: this._authService.authorized$
     },
     {
-      title: "Stub",
-      link: ['#'],
-      icon: "block",
+      title: "Logout",
+      link: routes.auth.logout,
+      icon: "logout",
       notificationsCount$: null,
       if$: this._authService.authorized$
     },

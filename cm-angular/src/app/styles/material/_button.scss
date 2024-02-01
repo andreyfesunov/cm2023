@@ -1,3 +1,5 @@
+@use "../mixins/typography";
+
 .mat-mdc-raised-button.mat-mdc-button-base {
   height: 40px;
   border-radius: 20px;
@@ -14,4 +16,8 @@
 .mat-mdc-raised-button.mat-primary.mat-primary {
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
+}
+
+.mdc-button__label.mdc-button__label {
+  @include typography.body-large;
 }

@@ -34,6 +34,12 @@ export class BooksListPageComponent implements OnDestroy {
     this._routerService.toCreateBook();
   }
 
+  protected onGenerate(): void {
+    this._subscription.add(
+      this._booksService.generate(5).subscribe()
+    );
+  }
+
   protected onClear(): void {
     this._subscription.add(
       this._booksService.clear().subscribe()

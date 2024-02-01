@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnDestroy, ViewEncapsulation} from "
 import {AuthService} from "../../services/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IRegisterRequest} from "../../interfaces/auth";
-import {Subscription} from "rxjs";
+import {BehaviorSubject, Subscription, tap} from "rxjs";
 import {RouterService} from "../../../../router.service";
 
 interface IRegisterFormGroup {
@@ -27,6 +27,8 @@ export class RegisterPageComponent implements OnDestroy {
     private readonly _routerService: RouterService
   ) {
   }
+
+  protected hasError$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   public ngOnDestroy(): void {
     this._subscription.unsubscribe();
@@ -55,7 +57,9 @@ export class RegisterPageComponent implements OnDestroy {
       }
 
       this._subscription.add(
-        this._authService.register(dto).subscribe({
+        this._authService.register(dto).pipe(
+          tap(() => this.hasError$.next(false))
+        ).subscribe({
           next: () => this.onSuccess(),
           error: () => this.onError()
         })
@@ -70,6 +74,6 @@ export class RegisterPageComponent implements OnDestroy {
   }
 
   private onError(): void {
-    console.log('error');
+    this.hasError$.next(true);
   }
 }

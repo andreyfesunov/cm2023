@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {UserAreaPageComponent} from "./components/user-area-page/user-area-page.component";
 import {UserRoutes} from "../../router.service";
-import {authGuard, nonAuthGuard} from "./guards/auth.guard";
+import {authGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -18,7 +18,6 @@ const routes: Routes = [
       {
         path: UserRoutes.Auth,
         loadChildren: () => import('../auth/auth.module').then(m => m.AuthModuleWithRouting),
-        canActivate: [nonAuthGuard]
       },
       {
         path: '',

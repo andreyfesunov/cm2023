@@ -31,3 +31,13 @@ export const nonAuthGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state
       })
     );
 }
+
+export const logoutGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  const authService: AuthService = inject(AuthService);
+  const routerService: RouterService = inject(RouterService);
+
+  return authService.authorized$
+    .pipe(
+      tap(() => authService.logout())
+    )
+}

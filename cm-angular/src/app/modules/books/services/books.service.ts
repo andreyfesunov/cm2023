@@ -40,6 +40,14 @@ export class BooksService extends BooksAbstractService {
     );
   }
 
+  public generate(count: number): Observable<void> {
+    return this._booksApiService.generate(count).pipe(
+      tap(() => this._booksRootService.event$.next({
+        type: BooksEventEnum.Created
+      }))
+    );
+  }
+
   public update(dto: IUpdateBookRequest): Observable<IBook> {
     return this._booksApiService.update(dto).pipe(
       tap(() => this._booksRootService.event$.next({

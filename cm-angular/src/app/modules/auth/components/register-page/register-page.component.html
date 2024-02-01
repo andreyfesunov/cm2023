@@ -13,4 +13,5 @@
   </mat-form-field>
 
   <button mat-raised-button (click)="onSubmit()">Submit</button>
+  <mat-error class="register-form__error" *ngIf="hasError$ | async">Registration attempt failed</mat-error>
 </div>

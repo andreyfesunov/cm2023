@@ -7,13 +7,19 @@ import {AuthRoutingModule} from "./auth-routing.module";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {LogoutPageComponent} from "./components/logout-page/logout-page.component";
 
 const components = [
   LoginPageComponent,
-  RegisterPageComponent
+  RegisterPageComponent,
+  LogoutPageComponent
 ];
 
-const matModules = []
+const matModules = [
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule
+]
 
 const modules = [
   CommonModule,
@@ -26,7 +32,7 @@ const providers = [];
 @NgModule({
   declarations: [...components],
   exports: [...components],
-  imports: [...modules, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [...modules],
   providers: [...providers]
 })
 export class AuthModule {

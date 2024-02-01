@@ -8,6 +8,8 @@ export abstract class BooksAbstractService {
 
   public abstract create(dto: ICreateBookRequest): Observable<IBook>;
 
+  public abstract generate(count: number): Observable<void>;
+
   public abstract update(dto: IUpdateBookRequest): Observable<IBook>;
 
   public abstract clear(): Observable<void>;

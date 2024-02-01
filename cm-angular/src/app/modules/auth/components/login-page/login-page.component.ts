@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnDestroy, ViewEncapsulation} from "
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {ILoginRequest} from "../../interfaces/auth";
-import {Subscription} from "rxjs";
+import {BehaviorSubject, Subscription, tap} from "rxjs";
 import {RouterService} from "../../../../router.service";
 
 interface ILoginFormGroup {
@@ -27,6 +27,8 @@ export class LoginPageComponent implements OnDestroy {
   ) {
   }
 
+  protected hasError$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   public ngOnDestroy(): void {
     this._subscription.unsubscribe();
   }
@@ -50,10 +52,12 @@ export class LoginPageComponent implements OnDestroy {
       }
 
       this._subscription.add(
-        this._authService.login(dto).subscribe({
-          next: () => this.onSuccess(),
-          error: () => this.onError()
-        })
+        this._authService.login(dto)
+          .pipe(tap(() => this.hasError$.next(false)))
+          .subscribe({
+            next: () => this.onSuccess(),
+            error: () => this.onError()
+          })
       );
     } else {
       this.formGroup.markAllAsTouched();
@@ -65,6 +69,6 @@ export class LoginPageComponent implements OnDestroy {
   }
 
   private onError(): void {
-    console.log('error');
+    this.hasError$.next(true);
   }
 }

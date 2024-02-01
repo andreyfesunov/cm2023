@@ -26,8 +26,28 @@
     display: flex;
     gap: var(--_cm-books-list-grid-gap);
   }
+
+  &__empty {
+    --_cm-books-list-text-color: var(--md-sys-color-secondary);
+
+    color: var(--_cm-books-list-text-color);
+    @include styles.title-medium;
+
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+}
+
+.scrollable-block {
+  height: 100%;
 }
 
 .title-small {
   @include styles.title-small;
+}
+
+.header-left-items {
+  display: flex;
+  gap: 8px;
 }

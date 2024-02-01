@@ -23,7 +23,7 @@ const matModules = [
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatCardModule,
+  MatCardModule
 ]
 
 const modules = [
